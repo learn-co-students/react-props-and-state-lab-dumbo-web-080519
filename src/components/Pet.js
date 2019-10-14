@@ -9,15 +9,15 @@ class Pet extends React.Component {
       <div className="card">
         <div className="content">
           <a className="header">
-            {petInfo.gender === "male" ? '♀' : '♂' }
-            { petInfo.name }
+            { petInfo.name }{' '}
+            {petInfo.gender === "female" ? '♀' : '♂' }
           </a>
           <div className="meta">
-            <span className="date">PET TYPE</span>
+            <span className="date">{petInfo.type}</span>
           </div>
           <div className="description">
-            <p>Age: PET AGE</p>
-            <p>Weight: PET WEIGHT</p>
+            <p>Age: {petInfo.age}</p>
+            <p>Weight: {petInfo.weight}</p>
           </div>
         </div>
         <div className="extra content">

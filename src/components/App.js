@@ -1,8 +1,7 @@
 import React from 'react'
-
 import Filters from './Filters'
 import PetBrowser from './PetBrowser'
-import { toUnicode } from 'punycode'
+
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +17,6 @@ class App extends React.Component {
 
   onChangeType = (event) => {
     let selectValue = event.target.value
-    console.log(selectValue)
     this.setState({
       filters: {
         type: selectValue
@@ -46,11 +44,9 @@ class App extends React.Component {
         break
     }
 
-    console.log(url)
     fetch(url)
     .then(res => res.json())
     .then(searchArray => {
-      console.table(searchArray)
       this.setState({
         pets: searchArray
       })
@@ -60,6 +56,7 @@ class App extends React.Component {
 
   onAdoptPet = (petObj) => {
     const id = petObj.id
+    // this.props.pet = {...petObj, isAdopted: true}
     const newArray = this.state.pets.map(pet => {
       if(pet.id === id) {
         console.log(pet)
@@ -68,9 +65,7 @@ class App extends React.Component {
         return pet
       }
     })
-    this.setState({
-      pets: newArray
-    })
+    this.setState({pets: newArray}, () => console.log(this.state))
   }
 
   render() {
