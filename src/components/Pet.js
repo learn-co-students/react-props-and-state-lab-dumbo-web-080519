@@ -1,6 +1,11 @@
 import React from 'react'
 
 class Pet extends React.Component {
+
+  state = {
+    adopted: false
+  }
+
   render() {
     return (
       <div className="card">
